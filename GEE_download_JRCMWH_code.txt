@@ -1,0 +1,52 @@
+var TP = ee.FeatureCollection("projects/ee-thuliuzx/assets/TibetanPlateau");
+
+var startYear = 2000;
+var endYear = 2021;
+var endMonth = 12;
+
+
+for (var year = startYear; year <= endYear; year++) {
+  for (var month = 11; month <= endMonth; month++) {
+
+    var formattedMonth = ('0' + month).slice(-2);
+    var MRimageMonth = ('0' + (month - 1)).slice(-2);   
+
+    var monthlyImage = ee.Image('JRC/GSW1_4/MonthlyHistory/' + year + '_' + formattedMonth).clip(TP);
+    var MR = ee.Image('JRC/GSW1_4/MonthlyRecurrence/'+ 'monthly_recurrence_'+ MRimageMonth).clip(TP);
+    var yearlyImage = ee.Image('JRC/GSW1_4/YearlyHistory/' + year).clip(TP);
+
+    Export.image.toDrive({
+      crs: 'EPSG:4326',
+      image:monthlyImage,
+      folder: 'TP_' + year,
+      description: 'TP_' + year + '_' + formattedMonth+'original',
+      scale: 30,
+      region: TP,
+      maxPixels: 1e13
+    });
+  
+
+
+  Export.image.toDrive({
+      crs: 'EPSG:4326',
+      image:MR,
+      folder: 'TP_MR' ,
+      description: 'TP_' + formattedMonth+'MR',
+      scale: 30,
+      region: TP,
+      maxPixels: 1e13
+    });
+
+    
+Export.image.toDrive({
+      crs: 'EPSG:4326',
+      image:yearlyImage,
+      folder: 'TP_YCWH',
+      description: 'TP_' + year,
+      scale: 30,
+      region: TP,
+      maxPixels: 1e13
+    });
+    
+      }
+}
