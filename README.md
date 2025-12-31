@@ -1,6 +1,6 @@
-## These codes are the core scripts for creating the dataset used in the article "Monthly 30-m Surface Water Dataset of the Tibetan Plateau from 2000 to 2021". 
+## These codes are the core scripts for creating the TP MWH dataset used in the article "Reconstruction of Long-Term Monthly 30-m Surface Water Dataset on the Tibetan Plateau using JRC data and stepwise gap-filling method". 
 
-#It can be used for downloading and reconstructing the original dataset on the Google Earth Engine and Python.
+#It can be used for downloading and reconstructing the original JRC MWH dataset on the Google Earth Engine and Python.
 
 #1---GEE_download_JRCMWH_code.txt
 Open this file in the Google Earth Engine Code Editor. It includes image collection filtering and image clipping functions and is used to download the initial dataset used in the article.
