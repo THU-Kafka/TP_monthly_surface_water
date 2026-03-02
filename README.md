@@ -1,14 +1,29 @@
-## These codes are the core scripts for creating the TP MWH dataset used in the article "Landsat-Derived Gap-Free Monthly 30-m Dataset (2000–2021) Unraveling Intra-Annual Surface Water Dynamics on the Tibetan Plateaud". 
+##TP_monthly_surface_water
+##This repository contains the core code for generating the Tibetan Plateau (TP) 30-m gap-free monthly surface water dataset (2000–2021) used in the research article:
+"Landsat-Derived Gap-Free Monthly 30-m Dataset (2000–2021) Unraveling Intra-Annual Surface Water Dynamics on the Tibetan Plateau"
 
-#It can be used for downloading and reconstructing the original JRC MWH dataset on the Google Earth Engine and Python.
+##Code Description
+The scripts enable downloading and reconstructing the original JRC Global Surface Water datasets (MWH/YWCH/MWR) via Google Earth Engine (GEE) and Python, implementing the Stepwise Gap-Filling (SGF) method proposed in the study.
 
-#1---GEE_download_JRCMWH_code.txt
-Open this file in the Google Earth Engine Code Editor. It includes image collection filtering and image clipping functions and is used to download the initial dataset used in the article.
+##GEE_download_JRCMWH_code.txt：GEE-based data downloading, Open in GEE Code Editor: Includes image collection filtering, clipping (to TP boundary), and export functions for the initial JRC MWH dataset.
+SGFmethod_step12.py:	SGF method (Steps 1 & 2), Run in Python: Reads locally downloaded initial data, executes Step 1 (YWCH-based classification) and Step 2 (MWR-based inference) of the gap-filling process.
+SGFmethod_step34.py:	SGF method (Steps 3 & 4),	Run in Python: Reads the intermediate dataset from Steps 1&2, executes Step 3 (adjacent month MWH reference) and Step 4 (remaining gap handling) to generate the final gap-free dataset.
 
-#2---SGFmethod_step12.py
-Open this file in Python. It reads the initial dataset downloaded locally and reconstructs the dataset using the stepwise gap-filling method for step_1 & 2.
+##Output
+The reconstructed surface water dataset is saved in GeoTIFF format (EPSG:4326 coordinate system) with pixel values:
+1: Not water
+3: Water
+The dataset can be opened, visualized, and analyzed using software such as QGIS, ArcGIS, or GDAL.
 
-#3---SGFmethod_step34.py
-Open this file in Python. It reads the dataset saved locally after step_1 & 2 reconstruction and performs step_3 & 4 reconstruction using the stepwise gap-filling method. The reconstructed dataset is the final version used in the article.
+##Licence
+Dataset Licence
+The Tibetan Plateau 30-m gap-free monthly surface water dataset (2000–2021) associated with this code is made available under the Creative Commons Zero v1.0 Universal (CC0 1.0) licence. You are free to copy, modify, distribute, and use the dataset for any purpose (commercial or non-commercial), without attribution or permission.
+Dataset repository: https://doi.org/10.5281/zenodo.13910635
+Dataset citation: Liu, Z., Zhu, D., Wang, L., Yao, Q., & Li, D. (2024). Monthly 30-m Surface Water Dataset of the Tibetan Plateau from 2000 to 2021 [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.13910635
 
-#The dataset is saved in TIFF format, which can be opened and visualized in QGIS software.
+##Code Licence
+All code in this repository (.txt and .py files) is released under the Creative Commons Zero v1.0 Universal (CC0 1.0) licence. You may reuse, modify, and redistribute the code without restriction, provided that the original research article is cited when the code is used in academic work.
+
+##Requirements
+For GEE code: Google Earth Engine account (https://earthengine.google.com/)
+For Python scripts: Python 3.7+, libraries including gdal, numpy, pandas, rasterio
