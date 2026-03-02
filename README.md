@@ -1,4 +1,4 @@
-## These codes are the core scripts for creating the TP MWH dataset used in the article "Reconstruction of long-term monthly 30-m surface water dataset on the Tibetan Plateau using the stepwise gap-filling method". 
+## These codes are the core scripts for creating the TP MWH dataset used in the article "Landsat-Derived Gap-Free Monthly 30-m Dataset (2000–2021) Unraveling Intra-Annual Surface Water Dynamics on the Tibetan Plateaud". 
 
 #It can be used for downloading and reconstructing the original JRC MWH dataset on the Google Earth Engine and Python.
 
